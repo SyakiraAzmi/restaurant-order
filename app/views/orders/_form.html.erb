@@ -11,6 +11,28 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :food %>
+    <%= form.text_field :food %>
+  </div>
+
+  <div class="field">
+    <%= form.label :drink %>
+    <%= form.text_field :drink %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, options_for_select(['Pending','Complete']) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :customer_id %>
+    <%= form.select :customer_id, options_for_select(Customer.pluck(:name, :id)) %>
+  </div>
+
+  <%= form.hidden_field :waiter_id, value: params[:waiter_id] %> 
+
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to waiter_path(id: params[:order][:waiter_id]), notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -69,6 +69,8 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.fetch(:order, {})
+      # params.fetch(:order, {})
+      params.require(:order).permit(:food, :drink, :status, :customer_id, :waiter_id)
+
     end
 end

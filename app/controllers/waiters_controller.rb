@@ -10,6 +10,10 @@ class WaitersController < ApplicationController
   # GET /waiters/1
   # GET /waiters/1.json
   def show
+    # Waiter.all[1].orders
+    # Waiter.second.orders
+    # @waiter = Waiter.find(1)
+    @orders = @waiter.orders
   end
 
   # GET /waiters/new

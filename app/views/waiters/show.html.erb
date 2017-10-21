@@ -6,5 +6,27 @@
 
 <h2>Orders</h2>
 
+	<table>
+  		<thead>
+		    <tr>
+		      <th>Customer</th>
+		      <th>Food</th>
+		      <th>Drink</th>
+		      <th>Status</th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		    <% @orders.each do |order| %>
+		      <tr>
+		        <td><%= order.customer.name %></td>
+		        <td><%= order.food %></td>
+		        <td><%= order.drink %></td>
+		        <td><%= order.status %></td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+
 <%= link_to 'New Order', new_order_path(waiter_id: @waiter.id) %>
 <%= link_to 'Back', new_waiter_path %>
