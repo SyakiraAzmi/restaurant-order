@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_waiter_path(@waiter) %> |
-<%= link_to 'Back', waiters_path %>
+<h2>Waiter's Details</h2>
+	<p><b>Name: </b><%= @waiter.name %></p>
+	<p><b>Gender: </b><%= @waiter.gender %></p>
+
+<h2>Orders</h2>
+
+<%= link_to 'New Order', new_order_path(waiter_id: @waiter.id) %>
+<%= link_to 'Back', new_waiter_path %>

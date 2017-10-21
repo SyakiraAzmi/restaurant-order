@@ -69,6 +69,7 @@ class WaitersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def waiter_params
-      params.fetch(:waiter, {})
+      # params.fetch(:waiter, {})
+      params.require(:waiter).permit(:name, :gender)
     end
 end
