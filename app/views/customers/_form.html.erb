@@ -11,6 +11,22 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.select :gender, options_for_select(['Male', 'Female']) %> 
+    <!-- option value will be the same as the displayed option --> 
+  </div>
+
+  <div class="field">
+    <%= form.label :preference %>
+    <%= form.text_field :preference %>
+  </div>
+  
   <div class="actions">
     <%= form.submit %>
   </div>

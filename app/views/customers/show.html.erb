@@ -1,4 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+	<p><b>Name: </b><%= @customer.name %></p>
+	<p><b>Gender: </b><%= @customer.gender %></p>
+	<p><b>Preference: </b><%= @customer.preference %></p>
+
+<%= link_to 'Back', new_customer_path %>
