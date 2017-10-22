@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to waiter_path(id: params[:order][:waiter_id]), notice: 'Order was successfully created.' }
+        format.html { redirect_to waiter_path(id: order_params[:waiter_id]), notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to waiter_path(id: order_params[:waiter_id]), notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }
@@ -71,6 +71,6 @@ class OrdersController < ApplicationController
     def order_params
       # params.fetch(:order, {})
       params.require(:order).permit(:food, :drink, :status, :customer_id, :waiter_id)
-
+      # to only permit the specified params nested in order key
     end
 end

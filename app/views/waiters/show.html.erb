@@ -23,10 +23,11 @@
 		        <td><%= order.food %></td>
 		        <td><%= order.drink %></td>
 		        <td><%= order.status %></td>
+		        <td><%= link_to 'Edit Status', edit_order_path(id: order.id, id_of_the_waiter: @waiter.id) %></td>
 		      </tr>
 		    <% end %>
 		  </tbody>
 		</table>
 
-<%= link_to 'New Order', new_order_path(waiter_id: @waiter.id) %>
+<%= link_to 'New Order', new_order_path(id_of_the_waiter: @waiter.id) %>
 <%= link_to 'Back', new_waiter_path %>

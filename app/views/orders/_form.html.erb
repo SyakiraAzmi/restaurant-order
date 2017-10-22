@@ -25,13 +25,17 @@
     <%= form.label :status %>
     <%= form.select :status, options_for_select(['Pending','Complete']) %>
   </div>
-
+ 
   <div class="field">
     <%= form.label :customer_id %>
-    <%= form.select :customer_id, options_for_select(Customer.pluck(:name, :id)) %>
+      <% if action_name == 'edit' %>
+        <%= order.customer.name %> <!-- order can access name since order belongs to customer-->
+      <% else %>
+        <%= form.select :customer_id, options_for_select(Customer.pluck(:name, :id), order.customer_id) %>
+      <% end %>
   </div>
 
-  <%= form.hidden_field :waiter_id, value: params[:waiter_id] %> 
+  <%= form.hidden_field :waiter_id, value: params[:id_of_the_waiter] %> 
 
   <div class="actions">
     <%= form.submit %>
