@@ -41,7 +41,8 @@
     </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <%= form.submit class: 'btn btn-default' %>
+        <%= link_to 'Back', waiter_path(id: params[:id_of_the_waiter]), class: 'btn btn-default' %>
+        <%= form.submit class: 'btn btn-default' %> 
       </div>
     </div>
 
