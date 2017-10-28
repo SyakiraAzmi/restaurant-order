@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Restaurantorder</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Restaurantorder</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <% if controller_name=="waiters" && action_name=="show" %>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li class="active"><%= link_to 'New Order', new_order_path(id_of_the_waiter: @waiter.id) %></li>
+          <li class="active"><%= link_to 'Back', new_waiter_path %></li>
+        </ul>
+      </div>
+    </nav>
+  <% end %>
+    <div class='container'>
+      <%= yield %>
+    </div>
+</body>
 </html>

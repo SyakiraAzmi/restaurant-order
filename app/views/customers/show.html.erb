@@ -1,7 +1,29 @@
 <p id="notice"><%= notice %></p>
 
+<h3>Customer's Details</h3>
 	<p><b>Name: </b><%= @customer.name %></p>
 	<p><b>Gender: </b><%= @customer.gender %></p>
 	<p><b>Preference: </b><%= @customer.preference %></p>
 
-<%= link_to 'Back', new_customer_path %>
+<h3>Orders</h3>
+
+	<table class='table table-striped'>
+  		<thead>
+		    <tr>
+		      <th>Waiter</th>
+		      <th>Food</th>
+		      <th>Drink</th>
+		      <th>Status</th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		    <% @orders.each do |order| %>
+		      <tr>
+		        <td><%= order.waiter.name %></td>
+		        <td><%= order.food %></td>
+		        <td><%= order.drink %></td>
+		        <td><%= order.status %></td>
+		    <% end %>
+		  </tbody>
+		</table>

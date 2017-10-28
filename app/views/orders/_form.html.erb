@@ -1,4 +1,4 @@
-<%= form_with(model: order, local: true) do |form| %>
+<%= form_with(model: order, local: true, class: 'form-horizontal') do |form| %>
   <% if order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -11,33 +11,41 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :food %>
-    <%= form.text_field :food %>
-  </div>
-
-  <div class="field">
-    <%= form.label :drink %>
-    <%= form.text_field :drink %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, options_for_select(['Pending','Complete']) %>
-  </div>
- 
-  <div class="field">
-    <%= form.label :customer_id %>
-      <% if action_name == 'edit' %>
-        <%= order.customer.name %> <!-- order can access name since order belongs to customer-->
-      <% else %>
-        <%= form.select :customer_id, options_for_select(Customer.pluck(:name, :id), order.customer_id) %>
+    <div class="form-group">
+      <%= form.label :food, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= form.text_field :food, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= form.label :drink, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= form.text_field :drink, class: 'form-control' %> 
+      </div>
+    </div>
+    <div class="form-group">
+      <%= form.label :status, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= form.select :status, options_for_select(['Pending','Complete']), {}, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= form.label :customer_id, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <% if action_name == 'edit' %>
+          <%= order.customer.name %> <!-- order can access name since order belongs to customer-->
+        <% else %>
+          <%= form.select :customer_id, options_for_select(Customer.pluck(:name, :id), order.customer_id), {},class: 'form-control' %>
       <% end %>
-  </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= link_to 'Back', waiter_path(id: params[:id_of_the_waiter]), class: 'btn btn-default' %>
+        <%= form.submit class: 'btn btn-default' %> 
+      </div>
+    </div>
 
   <%= form.hidden_field :waiter_id, value: params[:id_of_the_waiter] %> 
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
