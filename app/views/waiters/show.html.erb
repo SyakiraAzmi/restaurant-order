@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Waiter's Details</h2>
+<h3>Waiter's Details</h3>
 	<p><b>Name: </b><%= @waiter.name %></p>
 	<p><b>Gender: </b><%= @waiter.gender %></p>
 
-<h2>Orders</h2>
+<h3>Orders</h3>
 
-	<table>
+	<table class='table table-striped'>
   		<thead>
 		    <tr>
 		      <th>Customer</th>
@@ -28,6 +28,3 @@
 		    <% end %>
 		  </tbody>
 		</table>
-
-<%= link_to 'New Order', new_order_path(id_of_the_waiter: @waiter.id) %>
-<%= link_to 'Back', new_waiter_path %>
